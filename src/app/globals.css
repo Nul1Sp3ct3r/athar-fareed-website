@@ -1,0 +1,267 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Athar Fareed — design tokens
+   Warm paper canvas, ink type, six art-directed accents.
+------------------------------------------------------------------- */
+@theme {
+  /* Canvas */
+  --color-paper: #f6f3ec;
+  --color-paper-raised: #fffdf8;
+  --color-paper-sunk: #ebe6da;
+
+  /* Ink */
+  --color-ink: #17161a;
+  --color-ink-soft: #4a4750;
+  --color-ink-faint: #7d7987;
+
+  /* Lines */
+  --color-line: rgb(23 22 26 / 0.12);
+  --color-line-strong: rgb(23 22 26 / 0.24);
+
+  /* Accents — each owns a service or a project. Ink reads on all of them
+     except cobalt, which carries paper-coloured type instead. */
+  --color-cobalt: #2f52f0;
+  --color-acid: #cbee45;
+  --color-sun: #ffc93c;
+  --color-coral: #ff6a4d;
+  --color-magenta: #f472b9;
+  --color-lilac: #bda6ff;
+
+  /* Occasional dark band */
+  --color-night: #17161a;
+
+  /* Feedback */
+  --color-danger: #d64527;
+
+  /* Fonts */
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
+
+  /* Fluid type. The display face is condensed, so it can run far larger
+     than a grotesque at the same measure. */
+  --text-hero: clamp(3.25rem, 12.4vw, 12rem);
+  --text-hero--line-height: 0.9;
+  --text-hero--letter-spacing: -0.01em;
+
+  --text-display: clamp(2.75rem, 7.6vw, 6.75rem);
+  --text-display--line-height: 0.92;
+  --text-display--letter-spacing: -0.005em;
+
+  --text-title: clamp(2.1rem, 4.4vw, 3.75rem);
+  --text-title--line-height: 0.98;
+
+  --text-row: clamp(2rem, 4.4vw, 3.5rem);
+  --text-row--line-height: 1;
+
+  --text-subtitle: clamp(1.375rem, 2.2vw, 1.875rem);
+  --text-subtitle--line-height: 1.15;
+  --text-subtitle--letter-spacing: -0.015em;
+
+  --text-lead: clamp(1.0625rem, 1.35vw, 1.3125rem);
+  --text-lead--line-height: 1.55;
+
+  --text-micro: 0.6875rem;
+  --text-micro--line-height: 1;
+  --text-micro--letter-spacing: 0.14em;
+
+  /* Radii — generously rounded surfaces */
+  --radius-card: 1.5rem;
+  --radius-card-lg: 2.25rem;
+  --radius-blob: 3rem;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ------------------------------------------------------------------
+   Base
+------------------------------------------------------------------- */
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    background-color: var(--color-paper);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html:not(.lenis) {
+    scroll-behavior: smooth;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  [dir="rtl"] body {
+    font-family: var(--font-arabic);
+  }
+
+  ::selection {
+    background-color: var(--color-acid);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-cobalt);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Type utilities
+------------------------------------------------------------------- */
+
+/* The display face. Arabic swaps to its own heavy weight, since no
+   condensed Arabic counterpart exists in this pairing. */
+@utility font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+[dir="rtl"] .font-display {
+  font-family: var(--font-arabic);
+  font-weight: 800;
+  letter-spacing: normal;
+  line-height: 1.12;
+}
+
+/* Arabic display copy is set solid; the Latin ramp is tuned for a
+   condensed face and runs too tight for connected letterforms. */
+[dir="rtl"] .text-hero {
+  font-size: clamp(3.25rem, 12vw, 10rem);
+}
+
+[dir="rtl"] .text-display,
+[dir="rtl"] .text-title,
+[dir="rtl"] .text-row {
+  line-height: 1.14;
+  letter-spacing: normal;
+}
+
+[dir="rtl"] .text-micro,
+[dir="rtl"] .text-subtitle {
+  letter-spacing: normal;
+}
+
+/* ------------------------------------------------------------------
+   Surface utilities
+------------------------------------------------------------------- */
+@utility card-lift {
+  box-shadow:
+    0 1px 0 0 rgb(23 22 26 / 0.05),
+    0 22px 44px -28px rgb(23 22 26 / 0.35);
+}
+
+@utility dot-grid {
+  background-image: radial-gradient(var(--color-line-strong) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+
+@utility rule-grid {
+  background-image:
+    linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size: 88px 88px;
+}
+
+@utility mask-fade-x {
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+@utility index-label {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+}
+
+/*
+ * The drawn underline is positioned against the inline box, whose bottom
+ * edge sits at a different distance from the baseline in each script — the
+ * condensed Latin face runs tight, the Arabic face runs loose.
+ */
+.af-underline {
+  bottom: -0.13em;
+}
+
+[dir="rtl"] .af-underline {
+  bottom: 0.06em;
+}
+
+/* A quick hand-drawn underline behind a highlighted word. */
+@utility marker-underline {
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 100% 0.34em;
+}
+
+@utility marquee-track {
+  animation: marquee-x var(--marquee-duration, 40s) linear infinite;
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Very light paper tooth — warmth, not texture. */
+@utility grain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ------------------------------------------------------------------
+   Reduced motion
+------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .marquee-track {
+    animation: none !important;
+  }
+}

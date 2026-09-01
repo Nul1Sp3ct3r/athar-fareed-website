@@ -1,0 +1,299 @@
+{
+  "meta": {
+    "title": "Athar Fareed | Technology & Digital Solutions",
+    "template": "%s | Athar Fareed",
+    "description": "Athar Fareed builds web platforms, mobile applications, AI solutions, automation systems, cybersecurity solutions and custom software.",
+    "keywords": "software house, web development, mobile apps, AI agents, business automation, cybersecurity, cloud, custom software"
+  },
+  "brand": {
+    "name": "Athar Fareed",
+    "tagline": "Technology that leaves an impact.",
+    "wordmarkAlt": "Athar Fareed — technology studio"
+  },
+  "nav": {
+    "work": "Work",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Start a Project",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "menuLabel": "Menu",
+    "languageLabel": "Language",
+    "switchTo": "العربية"
+  },
+  "hero": {
+    "eyebrow": "Technology Studio",
+    "titleLineOne": "Technology that",
+    "titleLineTwo": "leaves an impact.",
+    "lead": "We turn ambitious ideas into powerful digital products — engineered to scale, designed to be remembered.",
+    "primaryCta": "Start a Project",
+    "secondaryCta": "Explore Our Work",
+    "scroll": "Scroll",
+    "capabilities": [
+      "Product",
+      "Engineering",
+      "AI",
+      "Security"
+    ]
+  },
+  "marquee": {
+    "heading": "Built with technologies made to scale."
+  },
+  "services": {
+    "eyebrow": "Services",
+    "heading": "What We Build",
+    "lead": "Six disciplines, one team. We take products from a first conversation to a system your business can run on.",
+    "cta": "All services"
+  },
+  "work": {
+    "eyebrow": "Case Studies",
+    "heading": "Selected Work",
+    "lead": "A look at the kind of systems we design, build and maintain.",
+    "view": "View",
+    "viewCase": "View case study",
+    "all": "All projects",
+    "year": "Year",
+    "role": "Scope",
+    "next": "Next project",
+    "placeholderNote": "Placeholder case study — replace copy and visuals with the real engagement details."
+  },
+  "about": {
+    "eyebrow": "About",
+    "heading": "Not Just Another Tech Company.",
+    "body": "We combine technology, design and business thinking to build solutions that create measurable impact.",
+    "secondary": "Every engagement starts with the business problem, not the tech stack. What we ship is the shortest credible path between the two.",
+    "pillarsLabel": "Disciplines",
+    "pillars": [
+      {
+        "title": "Strategy",
+        "text": "Framing the real problem before a line of code is written."
+      },
+      {
+        "title": "Design",
+        "text": "Interfaces with a point of view, tested against real users."
+      },
+      {
+        "title": "Engineering",
+        "text": "Typed, tested, observable systems built to be handed over."
+      },
+      {
+        "title": "Security",
+        "text": "Threat modelling and hardening as part of the build, not after it."
+      },
+      {
+        "title": "AI",
+        "text": "Agents and automation applied where they measurably pay off."
+      }
+    ],
+    "more": "More about us",
+    "stickers": [
+      "Built for real businesses",
+      "AI where it actually helps",
+      "Security from day one",
+      "Made to scale",
+      "Ideas into products",
+      "Business before buzzwords",
+      "Design. Build. Improve."
+    ]
+  },
+  "process": {
+    "eyebrow": "Process",
+    "heading": "How We Work",
+    "lead": "A deliberate sequence. Every step ends with something you can review, not a status update.",
+    "steps": [
+      {
+        "title": "Discover",
+        "text": "Workshops, stakeholder interviews and an audit of what already exists."
+      },
+      {
+        "title": "Define",
+        "text": "Scope, architecture and success metrics agreed before estimating."
+      },
+      {
+        "title": "Design",
+        "text": "Flows, systems and interface prototypes you can click through."
+      },
+      {
+        "title": "Build",
+        "text": "Short iterations, reviewable increments, automated tests and CI."
+      },
+      {
+        "title": "Launch",
+        "text": "Hardening, load and security checks, then a monitored release."
+      },
+      {
+        "title": "Improve",
+        "text": "Telemetry, iteration and a roadmap that answers to real usage."
+      }
+    ]
+  },
+  "why": {
+    "eyebrow": "Why Athar Fareed",
+    "heading": "Why teams choose us",
+    "lead": "The difference is rarely the framework. It is how the work is decided, built and handed over.",
+    "items": [
+      {
+        "title": "Business-first thinking",
+        "text": "We optimise for outcomes you can defend in a board meeting."
+      },
+      {
+        "title": "Built for scale",
+        "text": "Architecture that survives the second and third year of growth."
+      },
+      {
+        "title": "Security by design",
+        "text": "Hardened defaults, reviewed dependencies, least privilege throughout."
+      },
+      {
+        "title": "Modern engineering",
+        "text": "Typed codebases, automated pipelines, documented decisions."
+      },
+      {
+        "title": "Clear communication",
+        "text": "One point of contact, written updates, no vanishing weeks."
+      },
+      {
+        "title": "Long-term partnership",
+        "text": "We build systems your team can own — and stay to support them."
+      }
+    ]
+  },
+  "cta": {
+    "heading": "Have an idea worth building?",
+    "lead": "Let’s turn it into something real.",
+    "button": "Start a Project",
+    "or": "or email us at"
+  },
+  "footer": {
+    "navLabel": "Navigate",
+    "socialLabel": "Elsewhere",
+    "contactLabel": "Contact",
+    "tagline": "Technology that leaves an impact.",
+    "rights": "All rights reserved.",
+    "backToTop": "Back to top"
+  },
+  "pages": {
+    "services": {
+      "title": "Services",
+      "eyebrow": "Capabilities",
+      "heading": "Everything we build, in one place.",
+      "lead": "Ten capabilities, delivered by one team so the seams between them never become your problem.",
+      "listLabel": "Full capability list",
+      "capabilities": [
+        "Web Development",
+        "Mobile Applications",
+        "Custom Software",
+        "AI Solutions",
+        "AI Agents",
+        "Business Automation",
+        "Cybersecurity",
+        "Cloud Solutions",
+        "System Integrations",
+        "UI/UX Design"
+      ]
+    },
+    "work": {
+      "title": "Work",
+      "eyebrow": "Work",
+      "heading": "Systems we’ve shaped.",
+      "lead": "Selected engagements across commerce, education and applied AI."
+    },
+    "about": {
+      "title": "About",
+      "eyebrow": "About",
+      "heading": "A studio built around consequence.",
+      "lead": "Athar Fareed is a technology and digital solutions company. We design, engineer and secure the systems businesses depend on.",
+      "manifestoLabel": "How we think",
+      "manifesto": [
+        {
+          "title": "The brief is a hypothesis",
+          "text": "We pressure-test the problem before we agree on a solution. It is cheaper to change a sentence than a schema."
+        },
+        {
+          "title": "Boring where it counts",
+          "text": "Proven infrastructure underneath, invention where the user actually feels it."
+        },
+        {
+          "title": "Handover is a feature",
+          "text": "Documentation, tests and architecture decisions ship with the product, not after it."
+        }
+      ],
+      "statsNote": "Company metrics will be published here once verified."
+    },
+    "contact": {
+      "title": "Contact",
+      "eyebrow": "Start a project",
+      "heading": "Tell us what you’re building.",
+      "lead": "Share a little context and the right person will reply — usually within two working days.",
+      "detailsLabel": "Direct"
+    },
+    "notFound": {
+      "title": "Page not found",
+      "heading": "This page left no trace.",
+      "lead": "The link may be outdated, or the page has moved.",
+      "cta": "Back to home"
+    }
+  },
+  "form": {
+    "name": "Name",
+    "namePlaceholder": "Your full name",
+    "company": "Company",
+    "companyPlaceholder": "Company or organisation",
+    "email": "Email",
+    "emailPlaceholder": "you@company.com",
+    "phone": "Phone",
+    "phonePlaceholder": "+966 …",
+    "projectType": "Project Type",
+    "budget": "Estimated Budget",
+    "details": "Project Details",
+    "detailsPlaceholder": "What are you building, who is it for, and what does success look like?",
+    "optional": "Optional",
+    "select": "Select an option",
+    "submit": "Send inquiry",
+    "submitting": "Sending…",
+    "successTitle": "Message received.",
+    "successText": "Thank you — we’ve logged your inquiry and will be in touch shortly.",
+    "again": "Send another",
+    "errorTitle": "Something went wrong.",
+    "errorText": "Please try again, or email us directly.",
+    "required": "This field is required",
+    "invalidEmail": "Enter a valid email address",
+    "projectTypes": [
+      "Website",
+      "Mobile App",
+      "AI",
+      "Automation",
+      "Cybersecurity",
+      "Custom Software",
+      "Other"
+    ],
+    "budgets": [
+      "Under 50,000 SAR",
+      "50,000 – 150,000 SAR",
+      "150,000 – 400,000 SAR",
+      "400,000+ SAR",
+      "Not sure yet"
+    ]
+  },
+  "caseStudy": {
+    "overview": "Overview",
+    "challenge": "Challenge",
+    "solution": "Solution",
+    "technology": "Technology",
+    "features": "Features",
+    "screenshots": "Screens",
+    "results": "Results",
+    "next": "Next project",
+    "backToWork": "All work",
+    "client": "Client",
+    "year": "Year",
+    "services": "Services",
+    "resultsPlaceholder": "Measured outcomes for this engagement are not published yet. This section is a placeholder and will be replaced with verified figures."
+  },
+  "proof": {
+    "eyebrow": "Partners",
+    "heading": "Coming soon",
+    "devNote": "Placeholder — this section stays hidden until approved partner quotes or logos exist."
+  }
+}
