@@ -31,5 +31,8 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   // Skip API routes, Next internals, and anything with a file extension.
-  matcher: ["/((?!api|_next|.*\..*).*)"],
+  // The dot is written as [.] on purpose: this is a TypeScript string, so a
+  // "\." escape would collapse to a plain "." and match any character, making
+  // the lookahead reject every path except "/".
+  matcher: ["/((?!api|_next|.*[.].*).*)"],
 };
