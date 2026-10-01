@@ -3,6 +3,8 @@ import { siteConfig } from "@/config/site";
 import { projects } from "@/data/projects";
 import { locales, localePath } from "@/lib/i18n";
 
+export const dynamic = "force-static";
+
 const STATIC_PATHS = ["/", "/work", "/services", "/about", "/contact"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -19,7 +21,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: path === "/" ? 1 : 0.7,
       alternates: {
         languages: Object.fromEntries(
-          locales.map((code) => [code, `${siteConfig.url}${localePath(code, path)}`]),
+          locales.map((code) => [
+            code,
+            `${siteConfig.url}${localePath(code, path)}`,
+          ]),
         ),
       },
     })),
