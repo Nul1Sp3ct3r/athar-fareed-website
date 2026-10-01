@@ -13,6 +13,17 @@ export interface Inquiry {
 
 export type InquiryErrors = Partial<Record<keyof Inquiry, string>>;
 
+/**
+ * Honeypot field. Rendered off-screen in the form, so people never fill it in
+ * but naive bots do. Any non-empty value marks the submission as spam.
+ */
+export const HONEYPOT_FIELD = "website";
+
+export function isHoneypotFilled(input: unknown): boolean {
+  const raw = (input ?? {}) as Record<string, unknown>;
+  return text(raw[HONEYPOT_FIELD]).length > 0;
+}
+
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const MAX = {

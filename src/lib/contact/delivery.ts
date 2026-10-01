@@ -1,37 +1,70 @@
 import type { Inquiry } from "@/lib/contact/schema";
 
 /**
- * A destination for an inquiry. Add email, CRM, WhatsApp or database
- * transports here — the route never needs to change.
+ * A destination for an inquiry. Add CRM, WhatsApp or other transports here —
+ * the endpoint never needs to change.
  */
 export interface InquiryTransport {
   name: string;
   send(inquiry: Inquiry): Promise<void>;
 }
 
-/** Default transport: records the inquiry in server logs. */
-const logTransport: InquiryTransport = {
-  name: "log",
-  async send(inquiry) {
-    console.info("[inquiry]", {
-      receivedAt: new Date().toISOString(),
-      locale: inquiry.locale,
-      name: inquiry.name,
-      company: inquiry.company,
-      email: inquiry.email,
-      phone: inquiry.phone,
-      projectType: inquiry.projectType,
-      budget: inquiry.budget,
-      details: inquiry.details,
-    });
-  },
-};
+export interface ResendConfig {
+  apiKey?: string;
+  /** Verified sender, e.g. `Athar Fareed <contact@your-domain>`. */
+  from?: string;
+  /** Inbox that receives inquiries. Comma-separate for several. */
+  to?: string;
+}
 
-/**
- * Register additional transports here, e.g.
- *   const transports = [logTransport, resendTransport, crmTransport];
- */
-const transports: InquiryTransport[] = [logTransport];
+/** Collapses line breaks so user input cannot reshape the subject line. */
+function oneLine(value: string): string {
+  return value.replace(/[\r\n]+/g, " ").trim();
+}
+
+/** Emails the inquiry through Resend's HTTP API (no SDK). */
+export function resendTransport(config: ResendConfig): InquiryTransport {
+  return {
+    name: "resend",
+    async send(inquiry) {
+      const { apiKey, from, to } = config;
+      if (!apiKey || !from || !to) {
+        throw new Error("Resend is not configured (RESEND_API_KEY, CONTACT_FROM_EMAIL, CONTACT_TO_EMAIL)");
+      }
+
+      const text = [
+        `Name: ${inquiry.name}`,
+        `Company: ${inquiry.company || "-"}`,
+        `Email: ${inquiry.email}`,
+        `Phone: ${inquiry.phone || "-"}`,
+        `Project type: ${inquiry.projectType}`,
+        `Budget: ${inquiry.budget || "-"}`,
+        `Locale: ${inquiry.locale}`,
+        "",
+        inquiry.details,
+      ].join("\n");
+
+      const response = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from,
+          to: to.split(",").map((address) => address.trim()).filter(Boolean),
+          reply_to: inquiry.email,
+          subject: oneLine(`New inquiry: ${inquiry.name} — ${inquiry.projectType}`),
+          text,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Resend responded ${response.status}: ${await response.text()}`);
+      }
+    },
+  };
+}
 
 export interface DeliveryResult {
   delivered: string[];
@@ -39,7 +72,10 @@ export interface DeliveryResult {
 }
 
 /** Fans the inquiry out to every transport; one failure never blocks another. */
-export async function deliverInquiry(inquiry: Inquiry): Promise<DeliveryResult> {
+export async function deliverInquiry(
+  inquiry: Inquiry,
+  transports: InquiryTransport[],
+): Promise<DeliveryResult> {
   const results = await Promise.allSettled(
     transports.map((transport) => transport.send(inquiry)),
   );

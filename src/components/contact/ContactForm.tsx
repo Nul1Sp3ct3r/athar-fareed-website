@@ -7,7 +7,7 @@ import type { FormEvent, ReactNode } from "react";
 import { Button } from "@/components/ui/Button";
 import { EASE } from "@/lib/animations";
 import { useI18n } from "@/lib/i18n-client";
-import { parseInquiry } from "@/lib/contact/schema";
+import { HONEYPOT_FIELD, parseInquiry } from "@/lib/contact/schema";
 import type { Inquiry, InquiryErrors } from "@/lib/contact/schema";
 import { cn } from "@/lib/utils";
 
@@ -83,6 +83,7 @@ export function ContactForm() {
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const honeypot = new FormData(event.currentTarget).get(HONEYPOT_FIELD) ?? "";
 
     const { data, errors: found, valid } = parseInquiry({ ...values, locale });
     if (!valid) {
@@ -96,7 +97,7 @@ export function ContactForm() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, [HONEYPOT_FIELD]: honeypot }),
       });
 
       if (!response.ok) throw new Error("request_failed");
@@ -131,6 +132,19 @@ export function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} noValidate className="grid gap-8 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10">
+      {/* Spam trap: off-screen and unreachable for people, filled in by bots. */}
+      <div aria-hidden className="sr-only">
+        <label htmlFor={`${id}-${HONEYPOT_FIELD}`}>Leave this field empty</label>
+        <input
+          id={`${id}-${HONEYPOT_FIELD}`}
+          name={HONEYPOT_FIELD}
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          defaultValue=""
+        />
+      </div>
+
       <Field label={t.form.name} htmlFor={`${id}-name`} error={errors.name && messages[errors.name]}>
         <input
           id={`${id}-name`}

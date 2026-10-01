@@ -1,0 +1,6 @@
+# Local values for `wrangler dev`. Copy to .dev.vars (gitignored) and fill in.
+# In production these live in the Cloudflare dashboard, never in the repo.
+# Server-side only — never prefix these with NEXT_PUBLIC_.
+RESEND_API_KEY=
+CONTACT_FROM_EMAIL=
+CONTACT_TO_EMAIL=

@@ -42,3 +42,8 @@ next-env.d.ts
 
 # keep the example env template tracked
 !.env.example
+
+# cloudflare workers (local secrets and wrangler state)
+.dev.vars*
+!.dev.vars.example
+.wrangler/

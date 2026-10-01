@@ -1,0 +1,21 @@
+{
+  // Must match the Worker's name in the Cloudflare dashboard.
+  "name": "athar-fareed-website",
+  "main": "worker/index.ts",
+  "compatibility_date": "2025-09-01",
+
+  // The Next.js static export. Every request is answered from these files
+  // directly; only /api/* runs the Worker script first.
+  "assets": {
+    "directory": "./out",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+
+  // RESEND_API_KEY, CONTACT_FROM_EMAIL and CONTACT_TO_EMAIL are configured in
+  // the dashboard (Settings → Variables and Secrets), never in this file.
+  // Locally, put them in .dev.vars (see .dev.vars.example).
+
+  "observability": { "enabled": true }
+}
