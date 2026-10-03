@@ -13,9 +13,13 @@
     "run_worker_first": ["/api/*"]
   },
 
-  // RESEND_API_KEY, CONTACT_FROM_EMAIL and CONTACT_TO_EMAIL are configured in
-  // the dashboard (Settings → Variables and Secrets), never in this file.
-  // Locally, put them in .dev.vars (see .dev.vars.example).
+  // Contact form email (Arsel). ARSEL_API_KEY, CONTACT_FROM_EMAIL and
+  // CONTACT_FROM_NAME are dashboard *secrets* (Settings → Variables and
+  // Secrets) — plain-text dashboard variables are overwritten by every
+  // `wrangler deploy`, secrets are not. Locally, use .dev.vars.
+  "vars": {
+    "CONTACT_TO_EMAIL": "info@uniqueimpact.sa"
+  },
 
   "observability": { "enabled": true }
 }

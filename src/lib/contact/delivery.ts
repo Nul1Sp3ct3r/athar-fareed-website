@@ -9,10 +9,19 @@ export interface InquiryTransport {
   send(inquiry: Inquiry): Promise<void>;
 }
 
-export interface ResendConfig {
+/**
+ * Arsel transactional email API.
+ * Docs: https://docs.arsel.sa/api/email/send-email
+ */
+const ARSEL_SEND_URL = "https://api.arsel.sa/v1/email/send";
+
+export interface ArselConfig {
+  /** Secret `be_…` API key. */
   apiKey?: string;
-  /** Verified sender, e.g. `Athar Fareed <contact@your-domain>`. */
+  /** Bare sender address on a domain verified in Arsel, e.g. `noreply@your-domain`. */
   from?: string;
+  /** Display name shown with the sender address (required by Arsel). */
+  fromName?: string;
   /** Inbox that receives inquiries. Comma-separate for several. */
   to?: string;
 }
@@ -22,14 +31,16 @@ function oneLine(value: string): string {
   return value.replace(/[\r\n]+/g, " ").trim();
 }
 
-/** Emails the inquiry through Resend's HTTP API (no SDK). */
-export function resendTransport(config: ResendConfig): InquiryTransport {
+/** Emails the inquiry through Arsel's HTTP API (no SDK). */
+export function arselTransport(config: ArselConfig): InquiryTransport {
   return {
-    name: "resend",
+    name: "arsel",
     async send(inquiry) {
-      const { apiKey, from, to } = config;
-      if (!apiKey || !from || !to) {
-        throw new Error("Resend is not configured (RESEND_API_KEY, CONTACT_FROM_EMAIL, CONTACT_TO_EMAIL)");
+      const { apiKey, from, fromName, to } = config;
+      if (!apiKey || !from || !fromName || !to) {
+        throw new Error(
+          "Arsel is not configured (ARSEL_API_KEY, CONTACT_FROM_EMAIL, CONTACT_FROM_NAME, CONTACT_TO_EMAIL)",
+        );
       }
 
       const text = [
@@ -44,7 +55,7 @@ export function resendTransport(config: ResendConfig): InquiryTransport {
         inquiry.details,
       ].join("\n");
 
-      const response = await fetch("https://api.resend.com/emails", {
+      const response = await fetch(ARSEL_SEND_URL, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${apiKey}`,
@@ -52,15 +63,23 @@ export function resendTransport(config: ResendConfig): InquiryTransport {
         },
         body: JSON.stringify({
           from,
+          from_name: fromName,
           to: to.split(",").map((address) => address.trim()).filter(Boolean),
           reply_to: inquiry.email,
           subject: oneLine(`New inquiry: ${inquiry.name} — ${inquiry.projectType}`),
           text,
+          category: "contact-form",
         }),
       });
 
+      // 202 Accepted means queued. Errors use { status_code, name, message }.
       if (!response.ok) {
-        throw new Error(`Resend responded ${response.status}: ${await response.text()}`);
+        const error = (await response.json().catch(() => null)) as
+          | { name?: string; message?: string }
+          | null;
+        throw new Error(
+          `Arsel responded ${response.status} ${error?.name ?? ""}: ${error?.message ?? ""}`.trim(),
+        );
       }
     },
   };

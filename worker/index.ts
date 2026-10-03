@@ -6,15 +6,17 @@
  * one endpoint it handles is `POST /api/contact` — the contract the contact
  * form already uses.
  */
-import { deliverInquiry, resendTransport } from "../src/lib/contact/delivery";
+import { arselTransport, deliverInquiry } from "../src/lib/contact/delivery";
 import { isHoneypotFilled, parseInquiry } from "../src/lib/contact/schema";
 
 interface Env {
   ASSETS: { fetch(request: Request): Promise<Response> };
-  /** Secret. */
-  RESEND_API_KEY?: string;
-  /** Verified Resend sender, e.g. `Athar Fareed <contact@your-domain>`. */
+  /** Secret `be_…` Arsel API key. */
+  ARSEL_API_KEY?: string;
+  /** Bare sender address on a domain verified in Arsel. */
   CONTACT_FROM_EMAIL?: string;
+  /** Sender display name. */
+  CONTACT_FROM_NAME?: string;
   /** Inbox that receives inquiries. Comma-separate for several. */
   CONTACT_TO_EMAIL?: string;
 }
@@ -43,9 +45,10 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
   }
 
   const result = await deliverInquiry(data, [
-    resendTransport({
-      apiKey: env.RESEND_API_KEY,
+    arselTransport({
+      apiKey: env.ARSEL_API_KEY,
       from: env.CONTACT_FROM_EMAIL,
+      fromName: env.CONTACT_FROM_NAME,
       to: env.CONTACT_TO_EMAIL,
     }),
   ]);
