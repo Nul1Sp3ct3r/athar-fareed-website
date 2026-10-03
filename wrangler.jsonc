@@ -13,11 +13,13 @@
     "run_worker_first": ["/api/*"]
   },
 
-  // Contact form email (Arsel). ARSEL_API_KEY, CONTACT_FROM_EMAIL and
-  // CONTACT_FROM_NAME are dashboard *secrets* (Settings → Variables and
-  // Secrets) — plain-text dashboard variables are overwritten by every
-  // `wrangler deploy`, secrets are not. Locally, use .dev.vars.
+  // Contact form email (Arsel). Non-secret settings live here so every
+  // `wrangler deploy` keeps them in sync. ARSEL_API_KEY is a dashboard
+  // *secret* only (Settings → Variables and Secrets) — never put it in this
+  // file. Locally, use .dev.vars.
   "vars": {
+    "CONTACT_FROM_EMAIL": "noreply@uniqueimpact.sa",
+    "CONTACT_FROM_NAME": "UNIQUE IMPACT",
     "CONTACT_TO_EMAIL": "info@uniqueimpact.sa"
   },
 
