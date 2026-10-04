@@ -1,20 +1,14 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
-import { projects } from "@/data/projects";
 import { locales, localePath } from "@/lib/i18n";
 
 export const dynamic = "force-static";
 
-const STATIC_PATHS = ["/", "/work", "/services", "/about", "/contact"];
+const PATHS = ["/", "/services", "/about", "/contact"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = [
-    ...STATIC_PATHS,
-    ...projects.map((project) => `/work/${project.slug}`),
-  ];
-
   return locales.flatMap((locale) =>
-    paths.map((path) => ({
+    PATHS.map((path) => ({
       url: `${siteConfig.url}${localePath(locale, path)}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,

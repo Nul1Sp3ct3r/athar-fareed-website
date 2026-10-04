@@ -38,7 +38,7 @@ export function buildMetadata({
     alternates: alternates(locale, path),
     openGraph: {
       type: "website",
-      siteName: locale === "ar" ? siteConfig.nameAr : siteConfig.name,
+      siteName: siteConfig.name,
       locale: OG_LOCALE[locale],
       alternateLocale: locales.filter((code) => code !== locale).map((code) => OG_LOCALE[code]),
       url: localePath(locale, path),
@@ -60,16 +60,17 @@ export function organizationJsonLd(locale: Locale) {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: locale === "ar" ? siteConfig.nameAr : siteConfig.name,
-    alternateName: locale === "ar" ? siteConfig.name : siteConfig.nameAr,
+    name: siteConfig.name,
     url: `${siteConfig.url}${localePath(locale)}`,
     description: t.meta.description,
+    logo: `${siteConfig.url}${siteConfig.logo}`,
     email: siteConfig.email,
+    telephone: siteConfig.phoneInternational,
     slogan: t.brand.tagline,
-    sameAs: siteConfig.social.map((social) => social.href),
     address: {
       "@type": "PostalAddress",
       addressLocality: siteConfig.location[locale],
+      addressCountry: "SA",
     },
     knowsAbout: [
       "Web Development",

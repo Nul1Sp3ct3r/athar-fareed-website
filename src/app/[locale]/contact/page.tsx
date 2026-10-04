@@ -74,7 +74,7 @@ export default async function ContactPage({
                   </li>
                   <li>
                     <a
-                      href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+                      href={`tel:${siteConfig.phoneInternational}`}
                       dir="ltr"
                       className="inline-block text-base text-ink-soft transition-colors duration-300 hover:text-ink"
                     >
@@ -82,21 +82,6 @@ export default async function ContactPage({
                     </a>
                   </li>
                   <li className="text-base text-ink-soft">{siteConfig.location[locale]}</li>
-                </ul>
-
-                <ul className="mt-8 flex flex-wrap gap-2 border-t border-ink/15 pt-6">
-                  {siteConfig.social.map((social) => (
-                    <li key={social.label}>
-                      <a
-                        href={social.href}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        className="inline-flex rounded-full border border-ink/15 px-4 py-2 text-xs text-ink-soft transition-colors duration-300 hover:border-ink/25 hover:text-ink"
-                      >
-                        {social.label}
-                      </a>
-                    </li>
-                  ))}
                 </ul>
               </div>
             </Reveal>

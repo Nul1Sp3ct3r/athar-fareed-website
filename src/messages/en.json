@@ -1,17 +1,16 @@
 {
   "meta": {
-    "title": "Athar Fareed | Technology & Digital Solutions",
-    "template": "%s | Athar Fareed",
-    "description": "Athar Fareed builds web platforms, mobile applications, AI solutions, automation systems, cybersecurity solutions and custom software.",
+    "title": "UNIQUE IMPACT | Technology & Digital Solutions",
+    "template": "%s | UNIQUE IMPACT",
+    "description": "UNIQUE IMPACT builds web platforms, mobile applications, AI solutions, automation systems, cybersecurity solutions and custom software.",
     "keywords": "software house, web development, mobile apps, AI agents, business automation, cybersecurity, cloud, custom software"
   },
   "brand": {
-    "name": "Athar Fareed",
+    "name": "UNIQUE IMPACT",
     "tagline": "Technology that leaves an impact.",
-    "wordmarkAlt": "Athar Fareed — technology studio"
+    "wordmarkAlt": "UNIQUE IMPACT — technology studio"
   },
   "nav": {
-    "work": "Work",
     "services": "Services",
     "about": "About",
     "contact": "Contact",
@@ -28,7 +27,6 @@
     "titleLineTwo": "leaves an impact.",
     "lead": "We turn ambitious ideas into powerful digital products — engineered to scale, designed to be remembered.",
     "primaryCta": "Start a Project",
-    "secondaryCta": "Explore Our Work",
     "scroll": "Scroll",
     "capabilities": [
       "Product",
@@ -45,18 +43,6 @@
     "heading": "What We Build",
     "lead": "Six disciplines, one team. We take products from a first conversation to a system your business can run on.",
     "cta": "All services"
-  },
-  "work": {
-    "eyebrow": "Case Studies",
-    "heading": "Selected Work",
-    "lead": "A look at the kind of systems we design, build and maintain.",
-    "view": "View",
-    "viewCase": "View case study",
-    "all": "All projects",
-    "year": "Year",
-    "role": "Scope",
-    "next": "Next project",
-    "placeholderNote": "Placeholder case study — replace copy and visuals with the real engagement details."
   },
   "about": {
     "eyebrow": "About",
@@ -129,7 +115,7 @@
     ]
   },
   "why": {
-    "eyebrow": "Why Athar Fareed",
+    "eyebrow": "Why UNIQUE IMPACT",
     "heading": "Why teams choose us",
     "lead": "The difference is rarely the framework. It is how the work is decided, built and handed over.",
     "items": [
@@ -167,7 +153,6 @@
   },
   "footer": {
     "navLabel": "Navigate",
-    "socialLabel": "Elsewhere",
     "contactLabel": "Contact",
     "tagline": "Technology that leaves an impact.",
     "rights": "All rights reserved.",
@@ -193,17 +178,11 @@
         "UI/UX Design"
       ]
     },
-    "work": {
-      "title": "Work",
-      "eyebrow": "Work",
-      "heading": "Systems we’ve shaped.",
-      "lead": "Selected engagements across commerce, education and applied AI."
-    },
     "about": {
       "title": "About",
       "eyebrow": "About",
       "heading": "A studio built around consequence.",
-      "lead": "Athar Fareed is a technology and digital solutions company. We design, engineer and secure the systems businesses depend on.",
+      "lead": "UNIQUE IMPACT is a technology and digital solutions company. We design, engineer and secure the systems businesses depend on.",
       "manifestoLabel": "How we think",
       "manifesto": [
         {
@@ -275,21 +254,6 @@
       "400,000+ SAR",
       "Not sure yet"
     ]
-  },
-  "caseStudy": {
-    "overview": "Overview",
-    "challenge": "Challenge",
-    "solution": "Solution",
-    "technology": "Technology",
-    "features": "Features",
-    "screenshots": "Screens",
-    "results": "Results",
-    "next": "Next project",
-    "backToWork": "All work",
-    "client": "Client",
-    "year": "Year",
-    "services": "Services",
-    "resultsPlaceholder": "Measured outcomes for this engagement are not published yet. This section is a placeholder and will be replaced with verified figures."
   },
   "proof": {
     "eyebrow": "Partners",

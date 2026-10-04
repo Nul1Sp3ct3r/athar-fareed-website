@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/config/site";
 import { getDictionary, locales } from "@/lib/i18n";
@@ -10,11 +12,21 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
+/** Official logo artwork bounds inside the PNG (see Wordmark). */
+const LOGO = { width: 2172, height: 724 };
+const ART = { x: 274, y: 164, width: 1642, height: 409 };
+const LOGO_WIDTH = 380;
+
 /**
- * Share card. Deliberately Latin-only: the default OG font has no Arabic
- * coverage, so the Arabic wordmark would render as tofu.
+ * Share card. The copy is deliberately Latin-only: the default OG font has no
+ * Arabic coverage, so Arabic text would render as tofu. The official logo is
+ * embedded as an image, so its Arabic line is unaffected.
  */
-export default function OpengraphImage() {
+export default async function OpengraphImage() {
+  const logo = await readFile(join(process.cwd(), "public", siteConfig.logo));
+  const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
+  const scale = LOGO_WIDTH / ART.width;
+
   // English copy for both locales — see the note above.
   const dictionary = getDictionary("en");
 
@@ -33,15 +45,27 @@ export default function OpengraphImage() {
           color: "#17161a",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-            <div style={{ width: 10, height: 10, borderRadius: 10, background: "#bda6ff" }} />
-            <div style={{ width: 13, height: 13, borderRadius: 13, background: "#ff6a4d" }} />
-            <div style={{ width: 18, height: 18, borderRadius: 18, background: "#2f52f0" }} />
-          </div>
-          <div style={{ fontSize: 26, letterSpacing: 6, fontWeight: 700 }}>
-            {siteConfig.name.toUpperCase()}
-          </div>
+        <div
+          style={{
+            display: "flex",
+            position: "relative",
+            overflow: "hidden",
+            width: LOGO_WIDTH,
+            height: Math.round(ART.height * scale),
+          }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element -- rendered by ImageResponse, not the browser */}
+          <img
+            src={logoSrc}
+            alt={siteConfig.name}
+            width={Math.round(LOGO.width * scale)}
+            height={Math.round(LOGO.height * scale)}
+            style={{
+              position: "absolute",
+              left: Math.round(-ART.x * scale),
+              top: Math.round(-ART.y * scale),
+            }}
+          />
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>

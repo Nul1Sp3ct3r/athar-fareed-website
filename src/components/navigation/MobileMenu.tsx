@@ -137,16 +137,6 @@ export function MobileMenu({
                     onNavigate={close}
                   />
                 </div>
-
-                <ul className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-ink-faint">
-                  {siteConfig.social.map((social) => (
-                    <li key={social.label}>
-                      <a href={social.href} target="_blank" rel="noreferrer noopener">
-                        {social.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
               </motion.div>
             </div>
           </motion.div>

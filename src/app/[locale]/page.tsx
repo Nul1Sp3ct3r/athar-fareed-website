@@ -4,7 +4,6 @@ import { About } from "@/components/sections/About";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { Hero } from "@/components/sections/Hero";
 import { Process } from "@/components/sections/Process";
-import { SelectedWork } from "@/components/sections/SelectedWork";
 import { SocialProof } from "@/components/sections/SocialProof";
 import { Services } from "@/components/sections/Services";
 import { TechMarquee } from "@/components/sections/TechMarquee";
@@ -34,7 +33,6 @@ export default async function HomePage({
       <Hero locale={locale} />
       <TechMarquee locale={locale} />
       <Services locale={locale} />
-      <SelectedWork locale={locale} />
       <SocialProof locale={locale} />
       <About locale={locale} />
       <Process locale={locale} />

@@ -64,14 +64,6 @@ export function Hero({ locale }: { locale: Locale }) {
                 </ButtonLink>
               </MagneticButton>
 
-              <ButtonLink
-                href={localePath(locale, "/work")}
-                size="lg"
-                variant="secondary"
-                className="w-full sm:w-auto"
-              >
-                {t.hero.secondaryCta}
-              </ButtonLink>
             </div>
           </Reveal>
 
