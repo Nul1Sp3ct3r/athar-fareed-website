@@ -38,8 +38,8 @@ export const services: Service[] = [
     variant: "feature",
     title: { en: "Web Development", ar: "تطوير المواقع" },
     description: {
-      en: "High-performance websites, platforms and digital experiences.",
-      ar: "مواقع ومنصات وتجارب رقمية عالية الأداء.",
+      en: "High-performance websites, platforms and digital experiences",
+      ar: "مواقع ومنصات وتجارب رقمية عالية الأداء",
     },
     points: {
       en: ["Next.js", "Design systems", "Headless CMS", "Core Web Vitals"],
@@ -56,8 +56,8 @@ export const services: Service[] = [
     variant: "standard",
     title: { en: "Mobile Applications", ar: "تطبيقات الجوال" },
     description: {
-      en: "Scalable mobile products designed around real users.",
-      ar: "تطبيقات قابلة للتوسع مصممة حول المستخدم.",
+      en: "Scalable mobile products designed around real users",
+      ar: "تطبيقات قابلة للتوسع مصممة حول المستخدم",
     },
     points: {
       en: ["Flutter", "iOS & Android", "Offline-first"],
@@ -74,8 +74,8 @@ export const services: Service[] = [
     variant: "standard",
     title: { en: "AI & Automation", ar: "الذكاء الاصطناعي والأتمتة" },
     description: {
-      en: "AI agents, intelligent workflows and business automation.",
-      ar: "وكلاء ذكاء اصطناعي وأتمتة عمليات وأنظمة ذكية.",
+      en: "AI agents, intelligent workflows and business automation",
+      ar: "وكلاء ذكاء اصطناعي وأتمتة عمليات وأنظمة ذكية",
     },
     points: {
       en: ["AI agents", "RAG", "Workflow automation"],
@@ -92,8 +92,8 @@ export const services: Service[] = [
     variant: "standard",
     title: { en: "Cybersecurity", ar: "الأمن السيبراني" },
     description: {
-      en: "Secure architecture, assessments and penetration testing.",
-      ar: "بنية آمنة وتقييمات أمنية واختبارات اختراق.",
+      en: "Secure architecture, assessments and penetration testing",
+      ar: "بنية آمنة وتقييمات أمنية واختبارات اختراق",
     },
     points: {
       en: ["Threat modelling", "Pen testing", "Hardening"],
@@ -110,8 +110,8 @@ export const services: Service[] = [
     variant: "compact",
     title: { en: "Custom Software", ar: "البرمجيات المخصصة" },
     description: {
-      en: "Software designed specifically around your operations.",
-      ar: "برمجيات يتم تصميمها خصيصًا لاحتياجات عملك.",
+      en: "Software designed specifically around your operations",
+      ar: "برمجيات يتم تصميمها خصيصًا لاحتياجات عملك",
     },
     points: {
       en: ["Internal tools", "ERP & portals", "Data models"],
@@ -128,8 +128,8 @@ export const services: Service[] = [
     variant: "compact",
     title: { en: "Cloud & Integrations", ar: "الحلول السحابية والتكامل" },
     description: {
-      en: "Scalable cloud infrastructure and connected systems.",
-      ar: "بنية سحابية قابلة للتوسع وتكامل الأنظمة.",
+      en: "Scalable cloud infrastructure and connected systems",
+      ar: "بنية سحابية قابلة للتوسع وتكامل الأنظمة",
     },
     points: {
       en: ["AWS", "Containers", "System integrations"],

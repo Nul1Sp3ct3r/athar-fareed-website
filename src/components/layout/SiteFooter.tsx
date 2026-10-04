@@ -32,7 +32,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
               lang={isArabic ? "en" : "ar"}
               dir={isArabic ? "ltr" : "rtl"}
             >
-              {isArabic ? "Technology that leaves an impact." : "تقنية تترك أثرًا."}
+              {isArabic ? "Technology that leaves an impact" : "تقنية تترك أثرًا"}
             </p>
           </div>
 
@@ -83,9 +83,14 @@ export function SiteFooter({ locale }: { locale: Locale }) {
         </div>
 
         <div className="mt-16 flex flex-col gap-4 border-t-2 border-ink/15 py-7 sm:flex-row sm:items-center sm:justify-between lg:mt-24">
-          <p className="text-xs text-ink-faint">
-            © {new Date().getFullYear()} {siteConfig.name}.{" "}
-            {t.footer.rights}
+          <p className="text-xs leading-relaxed text-ink-faint">
+            {/* The Latin line keeps its own order inside RTL, still aligned to the reading edge. */}
+            <span className="block">
+              <bdi dir="ltr">
+                © {new Date().getFullYear()} {siteConfig.name}
+              </bdi>
+            </span>
+            <span className="block">{t.footer.rights}</span>
           </p>
           <BackToTop label={t.footer.backToTop} />
         </div>

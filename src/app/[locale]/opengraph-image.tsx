@@ -4,7 +4,7 @@ import { ImageResponse } from "next/og";
 import { siteConfig } from "@/config/site";
 import { getDictionary, locales } from "@/lib/i18n";
 
-export const alt = `${siteConfig.name} — Technology & Digital Solutions`;
+export const alt = `${siteConfig.name} | Technology & Digital Solutions`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -74,7 +74,7 @@ export default async function OpengraphImage() {
           <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
             <div style={{ width: 130, height: 10, borderRadius: 6, background: "#ff6a4d" }} />
             <div style={{ fontSize: 92, lineHeight: 1.02, fontWeight: 700, letterSpacing: -3, color: "#2f52f0" }}>
-              leaves an impact.
+              leaves an impact
             </div>
           </div>
         </div>
