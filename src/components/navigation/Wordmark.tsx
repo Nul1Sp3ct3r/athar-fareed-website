@@ -3,7 +3,7 @@ import Link from "next/link";
 import { localePath } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
-import { siteConfig } from "@/config/site";
+import { logoUrl, siteConfig } from "@/config/site";
 
 /**
  * The official bilingual logo, shown as-is for both locales.
@@ -12,9 +12,8 @@ import { siteConfig } from "@/config/site";
  * framed to the artwork's bounds instead of shrunk along with its padding.
  * The image keeps its intrinsic aspect ratio; the frame only hides padding.
  */
-const LOGO = { src: "/brand/unique-impact-logo.png", width: 2172, height: 724 };
-/** Artwork bounds inside the file, measured from its alpha channel. */
-const ART = { x: 274, y: 164, width: 1642, height: 409 };
+const LOGO = siteConfig.logo;
+const ART = siteConfig.logo.art;
 
 export function Wordmark({
   locale,
@@ -32,12 +31,12 @@ export function Wordmark({
       dir="ltr"
       className={cn(
         "relative block shrink-0 overflow-hidden",
-        size === "lg" ? "h-12 sm:h-14" : "h-9 lg:h-11",
+        size === "lg" ? "h-11 sm:h-12" : "h-8 lg:h-9",
       )}
       style={{ aspectRatio: `${ART.width} / ${ART.height}` }}
     >
       <Image
-        src={LOGO.src}
+        src={logoUrl}
         width={LOGO.width}
         height={LOGO.height}
         alt={siteConfig.name}

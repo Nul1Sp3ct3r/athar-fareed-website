@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { siteConfig } from "@/config/site";
+import { logoUrl, siteConfig } from "@/config/site";
 import { getDictionary, locales, localePath } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 
@@ -63,7 +63,7 @@ export function organizationJsonLd(locale: Locale) {
     name: siteConfig.name,
     url: `${siteConfig.url}${localePath(locale)}`,
     description: t.meta.description,
-    logo: `${siteConfig.url}${siteConfig.logo}`,
+    logo: `${siteConfig.url}${logoUrl}`,
     email: siteConfig.email,
     telephone: siteConfig.phoneInternational,
     slogan: t.brand.tagline,

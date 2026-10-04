@@ -65,13 +65,13 @@ src/
   lib/                      # i18n, seo, fonts, animations, utils, contact
   messages/{en,ar}.json     # all UI copy
 public/
-  brand/unique-impact-logo.png  # official bilingual logo — use as supplied
+  brand/Unique Impact_ Fingerprint Typography.png  # official logo — use as supplied
 worker/
   index.ts                  # Cloudflare Worker: /api/contact, everything else → assets
 wrangler.jsonc              # Worker name, static assets (out/), non-secret vars
 ```
 
-**Brand.** The official logo (`public/brand/unique-impact-logo.png`) is used
+**Brand.** The official logo (`public/brand/Unique Impact_ Fingerprint Typography.png`) is used
 unmodified in the header, footer, mobile menu and share card, for both locales.
 The file has transparent padding around the artwork, so `Wordmark.tsx` frames
 it to the artwork bounds instead of resizing or editing the file. Text contexts

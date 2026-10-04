@@ -12,10 +12,9 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-/** Official logo artwork bounds inside the PNG (see Wordmark). */
-const LOGO = { width: 2172, height: 724 };
-const ART = { x: 274, y: 164, width: 1642, height: 409 };
-const LOGO_WIDTH = 380;
+const LOGO = siteConfig.logo;
+const ART = siteConfig.logo.art;
+const LOGO_WIDTH = 440;
 
 /**
  * Share card. The copy is deliberately Latin-only: the default OG font has no
@@ -23,7 +22,7 @@ const LOGO_WIDTH = 380;
  * embedded as an image, so its Arabic line is unaffected.
  */
 export default async function OpengraphImage() {
-  const logo = await readFile(join(process.cwd(), "public", siteConfig.logo));
+  const logo = await readFile(join(process.cwd(), "public", LOGO.file));
   const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
   const scale = LOGO_WIDTH / ART.width;
 
