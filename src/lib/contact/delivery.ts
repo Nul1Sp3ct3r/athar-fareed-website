@@ -49,7 +49,6 @@ export function arselTransport(config: ArselConfig): InquiryTransport {
         `Email: ${inquiry.email}`,
         `Phone: ${inquiry.phone || "-"}`,
         `Project type: ${inquiry.projectType}`,
-        `Budget: ${inquiry.budget || "-"}`,
         `Locale: ${inquiry.locale}`,
         "",
         inquiry.details,

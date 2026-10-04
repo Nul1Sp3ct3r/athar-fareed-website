@@ -5,7 +5,6 @@ export interface Inquiry {
   email: string;
   phone: string;
   projectType: string;
-  budget: string;
   details: string;
   /** Locale the inquiry was submitted from, for routing the reply. */
   locale: string;
@@ -32,7 +31,6 @@ const MAX = {
   email: 200,
   phone: 40,
   projectType: 80,
-  budget: 80,
   details: 4000,
 } as const;
 
@@ -57,7 +55,6 @@ export function parseInquiry(input: unknown): {
     email: text(raw.email).slice(0, MAX.email),
     phone: text(raw.phone).slice(0, MAX.phone),
     projectType: text(raw.projectType).slice(0, MAX.projectType),
-    budget: text(raw.budget).slice(0, MAX.budget),
     details: text(raw.details).slice(0, MAX.details),
     locale: text(raw.locale) || "en",
   };

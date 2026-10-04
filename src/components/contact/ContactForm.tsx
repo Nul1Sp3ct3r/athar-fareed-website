@@ -1,9 +1,9 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
 import { motion } from "motion/react";
 import { useId, useState } from "react";
 import type { FormEvent, ReactNode } from "react";
+import { Select } from "@/components/contact/Select";
 import { Button } from "@/components/ui/Button";
 import { EASE } from "@/lib/animations";
 import { useI18n } from "@/lib/i18n-client";
@@ -19,7 +19,6 @@ const EMPTY: Inquiry = {
   email: "",
   phone: "",
   projectType: "",
-  budget: "",
   details: "",
   locale: "en",
 };
@@ -42,6 +41,7 @@ function Field({
   return (
     <div className={cn("group/field relative", className)}>
       <label
+        id={`${htmlFor}-label`}
         htmlFor={htmlFor}
         className="flex items-baseline gap-2 text-micro font-medium uppercase text-ink-faint transition-colors duration-300 group-focus-within/field:text-cobalt"
       >
@@ -161,19 +161,6 @@ export function ContactForm() {
         />
       </Field>
 
-      <Field label={t.form.company} htmlFor={`${id}-company`} optional={t.form.optional}>
-        <input
-          id={`${id}-company`}
-          name="company"
-          type="text"
-          autoComplete="organization"
-          placeholder={t.form.companyPlaceholder}
-          value={values.company}
-          onChange={(event) => update("company", event.target.value)}
-          className={inputClass}
-        />
-      </Field>
-
       <Field
         label={t.form.email}
         htmlFor={`${id}-email`}
@@ -195,6 +182,19 @@ export function ContactForm() {
         />
       </Field>
 
+      <Field label={t.form.company} htmlFor={`${id}-company`} optional={t.form.optional}>
+        <input
+          id={`${id}-company`}
+          name="company"
+          type="text"
+          autoComplete="organization"
+          placeholder={t.form.companyPlaceholder}
+          value={values.company}
+          onChange={(event) => update("company", event.target.value)}
+          className={inputClass}
+        />
+      </Field>
+
       <Field label={t.form.phone} htmlFor={`${id}-phone`} optional={t.form.optional}>
         <input
           id={`${id}-phone`}
@@ -213,52 +213,18 @@ export function ContactForm() {
         label={t.form.projectType}
         htmlFor={`${id}-type`}
         error={errors.projectType && messages[errors.projectType]}
+        className="sm:col-span-2"
       >
-        <div className="relative">
-          <select
-            id={`${id}-type`}
-            name="projectType"
-            required
-            aria-invalid={Boolean(errors.projectType)}
-            value={values.projectType}
-            onChange={(event) => update("projectType", event.target.value)}
-            className={cn(inputClass, "appearance-none pe-8")}
-          >
-            <option value="">{t.form.select}</option>
-            {t.form.projectTypes.map((type) => (
-              <option key={type} value={type} className="bg-paper-raised text-ink">
-                {type}
-              </option>
-            ))}
-          </select>
-          <ChevronDown
-            aria-hidden
-            className="pointer-events-none absolute bottom-4 end-0 size-4 text-ink-faint"
-          />
-        </div>
-      </Field>
-
-      <Field label={t.form.budget} htmlFor={`${id}-budget`} optional={t.form.optional}>
-        <div className="relative">
-          <select
-            id={`${id}-budget`}
-            name="budget"
-            value={values.budget}
-            onChange={(event) => update("budget", event.target.value)}
-            className={cn(inputClass, "appearance-none pe-8")}
-          >
-            <option value="">{t.form.select}</option>
-            {t.form.budgets.map((budget) => (
-              <option key={budget} value={budget} className="bg-paper-raised text-ink">
-                {budget}
-              </option>
-            ))}
-          </select>
-          <ChevronDown
-            aria-hidden
-            className="pointer-events-none absolute bottom-4 end-0 size-4 text-ink-faint"
-          />
-        </div>
+        <Select
+          id={`${id}-type`}
+          labelId={`${id}-type-label`}
+          value={values.projectType}
+          options={t.form.projectTypes}
+          placeholder={t.form.select}
+          onChange={(value) => update("projectType", value)}
+          invalid={Boolean(errors.projectType)}
+          describedBy={errors.projectType ? `${id}-type-error` : undefined}
+        />
       </Field>
 
       <Field

@@ -224,7 +224,6 @@
     "phone": "Phone",
     "phonePlaceholder": "+966 …",
     "projectType": "Project Type",
-    "budget": "Estimated Budget",
     "details": "Project Details",
     "detailsPlaceholder": "What are you building, who is it for, and what does success look like?",
     "optional": "Optional",
@@ -246,13 +245,6 @@
       "Cybersecurity",
       "Custom Software",
       "Other"
-    ],
-    "budgets": [
-      "Under 50,000 SAR",
-      "50,000 – 150,000 SAR",
-      "150,000 – 400,000 SAR",
-      "400,000+ SAR",
-      "Not sure yet"
     ]
   },
   "proof": {
